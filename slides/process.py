@@ -10,6 +10,7 @@ import glob
 
 def make_md(title, nb, html, pdf, fname):
     # header = f"---\nlayout: page\ntitle:{title}\npermalink: /slides/week\n---\n"
+    header = f"{title}\n"
     body = f"* [`jupyter notebook`]({nb})\n* [`html`]({html})\n* [`pdf`]({pdf})\n"
     with open(fname, "w") as f:
         f.write(header)
@@ -18,7 +19,7 @@ def make_md(title, nb, html, pdf, fname):
 
 
 def main():
-    clean = True
+    clean = False
     for week_dir in glob.glob("week*/"):
         for nb in glob.glob(f"{week_dir}week*.ipynb"):
             # extract info from name
@@ -35,6 +36,7 @@ def main():
             if clean:
                 subprocess.check_call(html_CMD)
                 subprocess.check_call(pdf_CMD)
+                make_md(f"week {week} ({date})", nb, html_fname, pdf_fname, md_fname)
             else:
                 if not os.path.isfile(html_fname):
                     subprocess.check_call(html_CMD)
