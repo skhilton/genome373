@@ -9,9 +9,9 @@ import subprocess
 import glob
 
 
-def make_md(title, nb, html, pdf, fname):
+def make_md(title, nb, html, pdf, md, fname):
     header = f"---\nlayout: page\ntitle: {title}\n---\n"
-    body = f"* [`jupyter notebook`]({os.path.basename(nb)})\n* [`html`]({os.path.basename(html)})\n* [`pdf`]({os.path.basename(pdf)})\n"
+    body = f"* [`markdown`]({os.path.basename(md)})\n* [`html`]({os.path.basename(html)})\n* [`pdf`]({os.path.basename(pdf)})\n* [`jupyter notebook`]({os.path.basename(nb)})\n"
     with open(fname, "w") as f:
         f.write(header)
         f.write(body)
@@ -41,7 +41,7 @@ def main():
                 subprocess.check_call(html_CMD)
                 subprocess.check_call(md_CMD)
                 subprocess.check_call(pdf_CMD)
-                make_md(title, nb, html_fname, pdf_fname, toc_fname)
+                make_md(title, nb, html_fname, pdf_fname, md_fname, toc_fname)
             else:
                 if not os.path.isfile(html_fname):
                     subprocess.check_call(html_CMD)
@@ -53,7 +53,7 @@ def main():
                 else:
                     print(f"Already found file {pdf_fname}")
                 if not os.path.isfile(md_fname):
-                    make_md(title, nb, html_fname, pdf_fname, toc_fname)
+                    make_md(title, nb, html_fname, pdf_fname, md_fname, toc_fname)
                 else:
                     print(f"Already found file {md_fname}")
 
