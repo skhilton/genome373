@@ -14,6 +14,8 @@ minima:
 # this and add the path to the pages in order as they should show up
 header_pages:
 - slides.md
+- homework.md
+- resources.md
 
 # Build settings
 theme: minima
