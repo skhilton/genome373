@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: slides
+permalink: /slides/
 ---
 
 Here are the weekly quiz section slides:
