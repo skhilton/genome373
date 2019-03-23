@@ -11,7 +11,6 @@ import glob
 
 def make_md(title, nb, html, pdf, fname):
     header = "---\nlayout: page\ntitle: {title}\n---"
-    header = f"---\nlayout: post\n---\n"
     body = f"* [`jupyter notebook`]({nb})\n* [`html`]({html})\n* [`pdf`]({pdf})\n"
     with open(fname, "w") as f:
         f.write(header)
