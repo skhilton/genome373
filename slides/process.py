@@ -33,7 +33,7 @@ def main():
         html_fname = f"week{week}.html"
         pdf_fname = f"week{week}.pdf"
         toc_fname = f"week{week}_toc.md"
-        title = f"week-{week} ({date})"
+        title = f"week {week} ({date})"
         print(title)
         # define commands
         html_CMD = ["pandoc", "-t", "revealjs", "-c", "../skh.css", "-o",
