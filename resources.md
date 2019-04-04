@@ -1,10 +1,8 @@
 ---
 layout: page
-title: resources
+title: FAQs and Resources
 permalink: /resources/
 ---
-
-# FAQs and Resources
 
 ## Correct `Python` installation
 
