@@ -1,5 +1,6 @@
 ---
-layout: page
+layout: default
+title: FAQs and Resources
 permalink: /resources/
 ---
 
