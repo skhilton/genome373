@@ -4,8 +4,6 @@ title: resources
 permalink: /resources/
 ---
 
-Helpful links
-
 ## Correct `Python` installation
 
 #### How do I install `Python3` on my windows computer?
