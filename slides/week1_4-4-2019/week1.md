@@ -169,7 +169,7 @@ return current_largest
 
 Coding/implementation is translating from pseudocode to a language the computer can understand (`Python`).
 
-# 3. Intro to programming in `Python`.{data-background-color="#f9cb9c"}
+# 3. Intro to programming in `Python`.{data-background-color="#d9d2e9"}
 
 # lets write our first program!
 
@@ -374,7 +374,7 @@ In `Python`: `if` / `elif` (else if) / `else`
 
 # Conditionals: `if`, `else`, `elif`
 
-<div style="line-height: 0.9em; font-size: 36%;">
+<div style="line-height: 0.9em; font-size: 34%;">
 ```python
 x = 4
 
