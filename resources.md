@@ -1,8 +1,10 @@
 ---
-layout: default
-title: FAQs and Resources
+layout: page
+title: resources
 permalink: /resources/
 ---
+
+Helpful links
 
 ## Correct `Python` installation
 
