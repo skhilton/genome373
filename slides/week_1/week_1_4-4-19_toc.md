@@ -2,5 +2,5 @@
 layout: page
 title: week 1 (4-4-19)
 ---
-* [`html`](week1.html)
+* [`html`](myslides.html)
 * [`markdown`](test.md)

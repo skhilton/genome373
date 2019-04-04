@@ -82,11 +82,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="quiz-section-goals" class="slide level1">
 <h1>Quiz Section goals</h1>
 <ul>
-<li>Solidify in-class material (please ask me questions!)<br />
+<li class="fragment">Solidify in-class material (please ask me questions!)<br />
 </li>
-<li>Develop understanding of programming concepts.<br />
+<li class="fragment">Develop understanding of programming concepts.<br />
 </li>
-<li>Learn some basic python to write bioinformatics programs.</li>
+<li class="fragment">Learn some basic python to write bioinformatics programs.</li>
 </ul>
 <p><em>Attendance is not required but the material covered is required.</em></p>
 </section>
@@ -96,97 +96,446 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </section>
 <section id="homework-policies" class="slide level1">
 <h1>Homework policies</h1>
-<div class="fragment">
 <ul>
-<li>Homework is assigned on Friday and is due the <em>following</em> Friday by 1:30pm. Assignments will be posted on canvas and the quiz section website.</li>
+<li class="fragment">Homework is assigned on Friday and is due the <em>following</em> Friday by 1:30pm. Assignments will be posted on canvas and the quiz section website.</li>
+<li class="fragment">Grading is based on <em>effort</em> as well as <em>execution</em>.</li>
+<li class="fragment">There are a total of <strong>nine</strong> homework assignments. We will drop the lowest homework grade.</li>
+<li class="fragment">No late assignments will be accepted.</li>
+<li class="fragment">First assignment will be posted tomorrow.</li>
 </ul>
-</div>
-<div class="fragment">
-<ul>
-<li>Grading is based on <em>effort</em> as well as <em>execution</em>.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>There are a total of <strong>nine</strong> homework assignments. We will drop the lowest homework grade.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>No late assignments will be accepted.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>First assignment will be posted tomorrow.</li>
-</ul>
-</div>
 </section>
 <section id="homework-policies-1" class="slide level1">
 <h1>Homework policies</h1>
 <ul>
-<li>Use resources wisely. It is fine to google/work in groups but don't copy!</li>
-<li>Don't use python modules that are obvious &quot;shortcuts&quot;. Rule of thumb: don't use any modules we haven't used in class.</li>
-<li>The course is taught in <code>Python3</code>. Please submit your homework in python3 (see me if you have issues)</li>
+<li class="fragment">Use resources wisely. It is fine to google/work in groups but don't copy!</li>
+<li class="fragment">Don't use python modules that are obvious &quot;shortcuts&quot;. Rule of thumb: don't use any modules we haven't used in class.</li>
+<li class="fragment">The course is taught in <code>Python3</code>. Please submit your homework in python3 (see me if you have issues)</li>
 </ul>
 </section>
 <section id="questions-about-course-logistics" class="slide level1">
 <h1>questions about course logistics?</h1>
 </section>
+<section id="todays-goals" class="slide level1">
+<h1>Today's goals</h1>
+<ol type="1">
+<li class="fragment">Review Alignments</li>
+<li class="fragment">Algorithms and programs, what and why?</li>
+<li class="fragment">Programming in <code>Python</code></li>
+</ol>
+</section>
+<section id="alignments" class="slide level1" data-background-color="#9fc5e8">
+<h1>1. Alignments</h1>
+</section>
+<section id="what-is-an-alignment" class="slide level1">
+<h1>What is an alignment?</h1>
+<blockquote>
+<p><strong>Arrangement</strong> of nucleotide (or amino acid) sequences, to <strong>identify regions of similarity</strong> that may be a consequence of <strong>functional, structural, or evolutionary relationships</strong> between the sequences.</p>
+</blockquote>
+<div class="fragment">
+<pre><code>G – A A T T C A G T T A
+|     |   | |   |     |
+G G – A – T C – G - - A</code></pre>
+</div>
+<div class="fragment">
+<p>What does the <code>|</code> mean?<br />
+What does the <code>-</code> mean?</p>
+</div>
+</section>
+<section id="what-are-some-reasons-to-score-sequences" class="slide level1">
+<h1>What are some reasons to score sequences?</h1>
+<h2 id="orthologs-paralogs-and-homologs">Orthologs, paralogs, and homologs</h2>
+</section>
 <section id="score-this-alignment" class="slide level1">
 <h1>Score this alignment</h1>
-<div class="column" style="float:left; width: 50%">
+<div class="column" style="float:left; width: 70%">
 <pre><code>C G G A A T C C
 | |   |   | | |
 C G - A - T T C</code></pre>
 </div>
-<div class="column" style="float:left; width: 50%">
+<div class="column" style="float:left; width: 30%">
 <figure>
-<img src="sub_matrix.png" alt="placeholder" height="600" /><figcaption>placeholder</figcaption>
+<img src="sub_matrix.png" height="300" />
 </figure>
 </div>
-<p>https://github.com/TammoR/pandoc_to_reveal/blob/master/pandoc_test.md</p>
+<div class="fragment" style="color:#B22222">
+<p>10 + 10 + -4 + 10 + -4 + 10 + 0 + 10 = 42</p>
+</div>
 </section>
-<section id="new-slide" class="slide level1" data-background-color="#9fc5e8">
-<h1>New slide</h1>
-<!-- </section><section data-id="5d3ce66151628a484e9500f5e0263f82" data-background-color="#9fc5e8"><div class="sl-block" data-block-type="text" style="width: 985px; left: 20px; top: 260px; height: auto;" data-block-id="d6cbaf5de9585dd028debd8df246eb81"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; text-align: left; color: rgb(255, 255, 255);"> -->
+<section id="programming-algorithms" class="slide level1" data-background-color="#f9cb9c">
+<h1>2. Programming + Algorithms</h1>
 </section>
-<section id="for-mutiple-columns-we-need-to-use-html-code" class="slide level1">
-<h1>For mutiple columns we need to use html code</h1>
+<section id="notes-on-programming" class="slide level1">
+<h1>Notes on programming</h1>
+<p>This class is designed for you for you to learn how to <strong>think programmatically</strong>, use <strong>bioinformatics algorithms</strong>, and learn some <strong>basic programming skills</strong>.</p>
+<div class="fragment">
+<p>This means that you won't have to implement every algorithm you learn but you will have the building blocks to think through/code other algorithms in the future.</p>
+</div>
+</section>
+<section id="notes-on-programming-1" class="slide level1">
+<h1>Notes on programming</h1>
+<div class="fragment">
+<h3 id="if-you-have-previous-programming-experience">If you have <strong>previous</strong> programming experience:</h3>
+<ul>
+<li class="fragment"><strong>Great!</strong> Make sure you understand how to program well <code>Python3</code> to understand class topics and complete homework assignments/tests.</li>
+</ul>
+</div>
+<div class="fragment">
+<h3 id="if-you-have-no-previous-programming-experience">If you have <strong>no previous</strong> programming experience:</h3>
+<ul>
+<li class="fragment"><strong>Great!</strong> We will start at the beginning. However, most people learn programming best by doing and we will move quickly. <a href="https://www.codecademy.com/">codeacademy.org</a></li>
+</ul>
+</div>
+</section>
+<section id="algorithms" class="slide level1">
+<h1>Algorithms</h1>
+<blockquote>
+<p>A set of detailed instructions that solve a problem/accomplish a task</p>
+</blockquote>
+<div class="fragment">
 <div class="column" style="float:left; width: 50%">
-<p>column1</p>
+<p><strong>Example:</strong> Cook pasta</p>
+</div>
+</div>
+<div class="fragment">
+<div class="column" style="float:left; width: 50%">
+<p><strong>Algorithm:</strong><br />
+1. Fill pot with water<br />
+2. Put on the stove<br />
+3. Turn stove to high<br />
+4. While water is not boiling:<br />
+- Wait<br />
+5. Add pasta to water stir<br />
+6. Wait 8 minutes</p>
+</div>
+</div>
+</section>
+<section id="algorithm-properties" class="slide level1">
+<h1>Algorithm properties</h1>
+<ul>
+<li class="fragment">Unambiguously defined series of steps</li>
+<li class="fragment">Works for all inputs of a defined set</li>
+<li class="fragment">Is guaranteed to produce a correct result for those inputs</li>
+</ul>
+<p>Often written in “pseudocode&quot;</p>
+</section>
+<section id="pseudocode-example" class="slide level1">
+<h1>Pseudocode example</h1>
+<p>Given three numbers, find the largest</p>
+<p><code>input</code>: ?<br />
+<code>output</code>: ?</p>
+<p><code>pseudocode</code>: ?</p>
+</section>
+<section id="pseudocode-example-1" class="slide level1">
+<h1>Pseudocode example</h1>
+<p>Given three numbers, find the largest</p>
+<p>input: three numbers A, B, and C<br />
+output: the largest number</p>
+<div style="line-height: 0.9em; font-size: 60%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">current_largest <span class="op">=</span> A
+<span class="cf">if</span> B <span class="op">&gt;</span> current_largest:
+    current_largest <span class="op">=</span> B
+<span class="cf">if</span> C <span class="op">&gt;</span> current_largest:
+    current_largest <span class="op">=</span> C
+<span class="cf">return</span> current_largest</code></pre></div>
+</div>
+</section>
+<section id="what-is-a-program" class="slide level1">
+<h1>What is a program?</h1>
+<blockquote>
+<p>A series of instructions that performs a specific task when executed by a computer</p>
+</blockquote>
+<p>Coding/implementation is translating from pseudocode to a language the computer can understand (<code>Python</code>).</p>
+</section>
+<section id="intro-to-programming-in-python." class="slide level1" data-background-color="#f9cb9c">
+<h1>3. Intro to programming in <code>Python</code>.</h1>
+</section>
+<section id="lets-write-our-first-program" class="slide level1">
+<h1>lets write our first program!</h1>
+<p><a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">Hello, World!</a></p>
+</section>
+<section id="write-a-script" class="slide level1">
+<h1>(1) Write a script</h1>
+</section>
+<section id="open-a-text-editor" class="slide level1">
+<h1>Open a text editor</h1>
+<h2 id="on-windows">On Windows</h2>
+<p><a href="https://notepad-plus-plus.org/">Notepad++</a><br />
+<a href="https://www.sublimetext.com/3">Sublime Text</a></p>
+<h2 id="on-mac">On Mac</h2>
+<p><a href="https://atom.io/">Atom</a><br />
+<a href="https://www.barebones.com/products/textwrangler/">TextWrangler</a><br />
+<a href="https://www.sublimetext.com/3">Sublime Text</a></p>
+</section>
+<section id="my_first_program.py" class="slide level1">
+<h1><code>my_first_program.py</code></h1>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;Hello, World!&quot;</span>)</code></pre></div>
+</section>
+<section id="command-line-navigation" class="slide level1">
+<h1>(2) Command line navigation</h1>
+</section>
+<section id="command-line-navigation-1" class="slide level1">
+<h1>Command line navigation</h1>
+<div class="column" style="float:left; width: 60%; font-size: 40%">
+<table style="width:54%;">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Goal</th>
+<th>Mac or Unix</th>
+<th>Windows</th>
+<th>output</th>
+<th>location (start in &quot;project&quot;)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>see where you are</td>
+<td><code>pwd</code></td>
+<td><code>cd</code></td>
+<td>project</td>
+<td>/Users/sarah/project</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>see what's in your current directory</td>
+<td><code>ls</code></td>
+<td><code>dir</code></td>
+<td>&quot;data/&quot;, &quot;script/&quot;, &quot;README.md&quot;</td>
+<td>project</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>move down into a directory</td>
+<td><code>cd data</code></td>
+<td><code>cd data</code></td>
+<td>no output</td>
+<td>project/data</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>move up one level</td>
+<td><code>cd ..</code></td>
+<td><code>cd ..</code></td>
+<td>no output</td>
+<td>project</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="column" style="float:left; width: 40%">
+<figure>
+<img src="dir.png" />
+</figure>
+</div>
+</section>
+<section id="navigation-resources" class="slide level1">
+<h1>Navigation resources</h1>
+<h2 id="mac-unix">Mac / Unix</h2>
+<p><a href="https://swcarpentry.github.io/shell-novice/02-filedir/index.html" class="uri">https://swcarpentry.github.io/shell-novice/02-filedir/index.html</a></p>
+<h2 id="windows">Windows</h2>
+<p><a href="https://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html" class="uri">https://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html</a></p>
+</section>
+<section id="running-the-script" class="slide level1">
+<h1>(3) Running the script</h1>
+</section>
+<section id="running-script-on-the-command-line" class="slide level1">
+<h1>Running script on the command line</h1>
+<ol type="1">
+<li class="fragment">Navigate to your file. (you should see <code>my_first_program.py</code> when you type <code>ls</code>)<br />
+</li>
+<li class="fragment">Run. (<code>python my_first_program.py</code>)</li>
+</ol>
+<div class="fragment">
+<p>What's the output on your screen?</p>
+</div>
+</section>
+<section id="coding-basics-variables-conditionals" class="slide level1">
+<h1>Coding basics: variables + conditionals</h1>
+</section>
+<section id="assign-a-value-to-a-variable" class="slide level1">
+<h1>Assign a value to a variable</h1>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">4</span>  <span class="co"># line of code</span></code></pre></div>
+<h3 id="vocab"><em>vocab</em></h3>
+<p>name: <code>x</code><br />
+value: <code>4</code><br />
+operator(assign): <code>=</code></p>
+</section>
+<section id="assign-a-value-to-a-variable-1" class="slide level1">
+<h1>Assign a value to a variable</h1>
+<div class="column" style="float:left; width: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">4</span></code></pre></div>
 </div>
 <div class="column" style="float:left; width: 50%">
-<p>column2</p>
+<figure>
+<img src="x_4.png" height="300" />
+</figure>
 </div>
-<p><strong>Bold text</strong> <em>Emphatic text</em> <del>Strike through</del></p>
-<dl>
-<dt>Term 1</dt>
-<dd>Definition 1
-</dd>
-<dt>Term 2</dt>
-<dd>Definition 2
-</dd>
-</dl>
 </section>
-<section id="images" class="slide level1">
-<h1>Images</h1>
-<div class="sl-block" data-block-type="image" style="min-width: 4px; min-height: 4px; width: 283px; height: 331px; left: 19px; top: 231px;" data-block-id="fa2f8bfe45d37df18c69f7c0986453ad">
-<div class="sl-block-content" style="z-index: 12;">
-<img data-natural-width="479" data-natural-height="560" style="" data-lazy-loaded="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/1006588/images/5939946/sub_matrix.png">
+<section id="assign-a-value-to-a-variable-2" class="slide level1">
+<h1>Assign a value to a variable</h1>
+<div class="column" style="float:left; width: 40%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">y <span class="op">=</span> <span class="dv">8</span>  
+z <span class="op">=</span> x <span class="op">+</span> y</code></pre></div>
 </div>
+<div class="column" style="float:left; width: 60%">
+<figure>
+<img src="z_12.png" height="500" />
+</figure>
 </div>
-<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 425px; left: 428px; top: 311px;" data-block-id="364821221ea463ed336642db92f3d0d2">
-<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
-<pre><span style="font-size:1.4em"><span style="text-align:left">C G G A A T C C
-| |   |   | | |
-C G - A - T T C</span></span>
-</pre>
 </section>
-<section id="code-block-with-a-specific-language" class="slide level1">
-<h1>code block with a specific language</h1>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">s <span class="op">=</span> <span class="st">&quot;Python syntax highlighting&quot;</span>
-<span class="bu">print</span>(s)</code></pre></div>
+<section id="variable-types" class="slide level1">
+<h1>Variable types</h1>
+Variable values can be
+<div style="line-height: 0.9em; font-size: 38%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># integer</span>
+x <span class="op">=</span> <span class="dv">1</span>
+
+<span class="co"># float (with decimals)</span>
+x <span class="op">=</span> <span class="fl">1.12</span>
+
+<span class="co"># character (single character)</span>
+x <span class="op">=</span> <span class="st">&#39;a&#39;</span>
+
+<span class="co"># string (multiple characters)</span>
+x <span class="op">=</span> <span class="st">&#39;abc&#39;</span>
+
+<span class="co"># boolean (True/False)</span>
+x <span class="op">=</span> <span class="va">True</span>
+
+<span class="co"># etc, etc, etc.</span></code></pre></div>
+</div>
+</section>
+<section id="quick-comment-on-comments" class="slide level1">
+<h1>Quick comment on comments</h1>
+<ul>
+<li class="fragment">In Python, the comment character is <code>#</code></li>
+<li class="fragment">Anything after <code>#</code> the computer ignores, it’s for the humans</li>
+<li class="fragment">Comments are important! Why?</li>
+</ul>
+</section>
+<section id="lists-many-values-in-one" class="slide level1">
+<h1>Lists: many-values-in-one</h1>
+<figure>
+<img src="list.png" />
+</figure>
+<div style="line-height: 0.9em; font-size: 38%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">my_list <span class="op">=</span> [<span class="dv">100</span>, <span class="st">&#39;s&#39;</span>, <span class="fl">1.1</span>, <span class="st">&#39;abc&#39;</span>]
+
+<span class="bu">print</span>(my_list[<span class="dv">0</span>])
+
+<span class="bu">print</span>(my_list[<span class="dv">1</span>])
+
+<span class="bu">print</span>(my_list[<span class="dv">3</span>])</code></pre></div>
+</div>
+</section>
+<section id="strings-lists-of-characters" class="slide level1">
+<h1>Strings: lists of characters</h1>
+<figure>
+<img src="list.png" />
+</figure>
+<div style="line-height: 0.9em; font-size: 38%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">my_string <span class="op">=</span> <span class="st">&quot;moo!&quot;</span>
+
+<span class="bu">print</span>(my_string[<span class="dv">0</span>])
+
+<span class="bu">print</span>(my_string[<span class="dv">1</span>])
+
+<span class="bu">print</span>(my_string[<span class="dv">3</span>])</code></pre></div>
+</div>
+</section>
+<section id="boolean-operators-expressions" class="slide level1">
+<h1>Boolean operators + expressions</h1>
+<blockquote>
+<p>&quot;A Boolean expression ... produces a Boolean value when evaluate, that is one of true or false.&quot; <a href="https://en.wikipedia.org/wiki/Boolean_expression">wikipedia.org/wiki/Boolean_expression</a></p>
+</blockquote>
+<p><em>Asks <code>True</code>/<code>False</code> questions</em></p>
+</section>
+<section id="boolean-operators-expressions-examples" class="slide level1">
+<h1>Boolean operators + expressions examples</h1>
+<div style="line-height: 0.9em; font-size: 38%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">4</span>  <span class="co"># assignment! not boolean</span>
+
+x <span class="op">==</span> <span class="dv">4</span>  <span class="co"># True</span>
+x <span class="op">!=</span> <span class="dv">4</span>  <span class="co"># False (not equals to)</span>
+
+x <span class="op">&gt;</span> <span class="dv">4</span>  <span class="co"># False</span>
+x <span class="op">&lt;=</span> <span class="dv">4</span>  <span class="co"># True</span>
+
+x <span class="op">==</span> <span class="dv">4</span> <span class="kw">and</span> x <span class="op">!=</span> <span class="dv">3</span>  <span class="co"># True</span>
+x <span class="op">!=</span> <span class="dv">4</span> <span class="kw">or</span> x <span class="op">!=</span> <span class="dv">2</span>  <span class="co"># True</span></code></pre></div>
+</div>
+</section>
+<section id="conditionals-if-else-elif" class="slide level1">
+<h1>Conditionals: <code>if</code>, <code>else</code>, <code>elif</code></h1>
+<blockquote>
+<p>Conditionals (flow control) determines which lines the computer looks at in the code.</p>
+</blockquote>
+<p>In <code>Python</code>: <code>if</code> / <code>elif</code> (else if) / <code>else</code></p>
+</section>
+<section id="conditionals-if-else-elif-1" class="slide level1">
+<h1>Conditionals: <code>if</code>, <code>else</code>, <code>elif</code></h1>
+<div style="line-height: 0.9em; font-size: 38%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">4</span>
+
+<span class="co"># if statement</span>
+<span class="cf">if</span> x <span class="op">==</span> <span class="dv">4</span>:
+    <span class="bu">print</span>(<span class="st">&quot;x is 4&quot;</span>)
+
+<span class="co"># if / else statement</span>
+<span class="cf">if</span> x <span class="op">==</span> <span class="dv">4</span>:
+    <span class="bu">print</span>(<span class="st">&quot;x is 4&quot;</span>)
+<span class="cf">else</span>:
+    <span class="bu">print</span>(<span class="st">&quot;x is not 4&quot;</span>)
+
+<span class="co"># if / elif / else statement</span>
+<span class="cf">if</span> x <span class="op">==</span> <span class="dv">4</span>:
+    <span class="bu">print</span>(<span class="st">&quot;x is 4&quot;</span>)
+<span class="cf">elif</span> x <span class="op">&gt;</span> <span class="dv">4</span>:
+    <span class="bu">print</span>(<span class="st">&quot;x is greater than 4&quot;</span>)
+<span class="cf">else</span>:
+    <span class="bu">print</span>(<span class="st">&quot;x is less than 4&quot;</span>)</code></pre></div>
+</div>
+</section>
+<section id="watch-out" class="slide level1">
+<h1>Watch out!</h1>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">if</span> x <span class="op">==</span> <span class="dv">4</span>:
+    <span class="bu">print</span>(<span class="st">&quot;x is 4&quot;</span>)</code></pre></div>
+<p><em>You must include the <code>:</code>. Lines &quot;under&quot; the conditional must be tabbed (or 4 spaces) over.</em></p>
+</section>
+<section id="summary" class="slide level1">
+<h1>Summary</h1>
+<h2 id="variables">variables</h2>
+<ul>
+<li class="fragment">name, value</li>
+<li class="fragment">assignment operator <code>=</code></li>
+<li class="fragment">lists can store many values</li>
+</ul>
+<h2 id="conditionals">conditionals</h2>
+<ul>
+<li class="fragment">flow control</li>
+<li class="fragment">use Boolean expressions (<code>True</code>/ <code>False</code>)</li>
+<li class="fragment"><code>if</code> / <code>elif</code> / <code>else</code></li>
+</ul>
+</section>
+<section id="questions-skhiltonuw.edu" class="slide level1" data-background-color="#b6d7a8">
+<h1>questions? skhilton@uw.edu</h1>
+</section>
+<section id="week-1-tips-tricks" class="slide level1">
+<h1>Week 1 tips + tricks</h1>
+<ul>
+<li class="fragment">The biggest difference (for you) between <code>Python2</code> and <code>Python3</code> is how the <code>print</code> function works. Watch out for this! To print in <code>Python3</code>: <code>print(&quot;hello, world!&quot;)</code></li>
+<li class="fragment">In Python, <code>x = 4</code> assigns the value <code>4</code> to the variable <code>x</code>. <code>x == 4</code> is a boolean expression. If <code>True</code> then the value of <code>x</code> is <code>4</code>, if <code>False</code> then the value of <code>x</code> is not <code>4</code>.</li>
+<li class="fragment"><code>Python</code> is <code>0</code> index. The first element in a list is element <code>0</code>.</li>
+<li class="fragment">White space matters! Don't mix tabs and spaces.</li>
+</ul>
 </section>
     </div>
   </div>
