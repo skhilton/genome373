@@ -1,6 +1,6 @@
 ---
 layout: page
-title: homework #1
+title: homework 1
 ---
 
 problem set:    
