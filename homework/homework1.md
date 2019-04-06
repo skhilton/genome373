@@ -3,13 +3,13 @@ layout: page
 title: homework 1
 ---
 
-**There was a typo in the original question #3. 
+**There was a typo in the original question #3.
 Please use the Needleman-Wunsch algorithm to find the optimal *global* alignment.
 The problem set below is the corrected version.**
 
 problem set:    
 [word](homework1.docx)  
-[pdf](homeowrk1.pdf)
+[pdf](homework1.pdf)
 
 extra material:   
 [starter script](homework1_skh.py)  
