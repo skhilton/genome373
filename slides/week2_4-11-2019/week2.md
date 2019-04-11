@@ -14,51 +14,49 @@ date: 2019-04-11
 
 # Local alignment
 
-* Please split into two groups
-* Write your algorithm on the board
-* Implement your algorithm
-* Report back your highest scoring local alignment
+* Please split into three groups  
+* Implement the Smith-Waterman algorithm on the board  
+* Report back your highest scoring local alignment  
 
 # Local alignment data
 
-Please align the following sequences
-`GAGTA` and `AGTTA`
+Please align `GAGTA` and `AGTTA`
 
-<div class="column" style="float:left; width: 70%">
+<div class="column" style="float:left; width: 50%">
 
 ![](sub_matrix.png){height=300px}
 
 </div>
-<div class="column" style="float:left; width: 30%">
-$F\left(i,j\right) = max\begin{cases}
-F\left(i-1, j-1\right) + s\left(x_i, y_j\right)\\
-F\left(i-1, j\right) + d \\
-F\left(i, j-1\right) + d\\
-0
-\end{cases}$
+<div class="column" style="float:left; width: 50%">
+![](f_ij.png)
 </div>
 
-# 2. P-values (free association) {data-background-color="#f9cb9c"}
+# Solution
+
+![](alignment_solution.png){height=500px}
+
+# 2. P-values{data-background-color="#f9cb9c"}
 
 # What do P-values tell us?
 
 - P-values tell you about expectations *under the null hypothesis*
 - The null hypothesis is usually the *boring default*, the *devil's advocate position*, or *what you want to see if you can disprove*.
-- Examples of null hypotheses: "there is *no* difference between treatment groups", "life expectantancy *is not* changing over time*, the coin *is not* weighted, the two sequences are *unrelated*.
+- Examples of null hypotheses: "there is *no* difference between treatment groups", "life expectantancy *is not* changing over time, the coin *is not* weighted, the two sequences are *unrelated*.
 
 # What *don't* P-values tell us?
 - P-values say nothing about the alternative hypothesis or how probable it is.
 - "We reject the null hypothesis" or "We fail to reject the null hypothesis"
 
-# Historical example: R.A. Fisher and the ["lady tasting tea" test](https://en.wikipedia.org/wiki/Lady_tasting_tea)
+# ["lady tasting tea" test](https://en.wikipedia.org/wiki/Lady_tasting_tea)
+![](tea.png)
 
 # Null distribution
 
 What the data may look like if the null distribution is true.
+*How many guesses would be correct if the guess were random?*
 
 ## (1) Parametrized probability distribution
-For the lady tasting tea test, this was a hypergeometric distribution
-$Prob$  
+For the lady tasting tea test, this was a hypergeometric distribution  
 *What are some other distributions?*  
 
 ## (2) Empirical null based on the real data
@@ -70,15 +68,22 @@ Defining the most appropriate null distribution is a relevant and tough problem 
 
 # Multiple hypothesis testing is dangerous!
 
+<div class="column" style="float:left; width: 50%">
+
 [FiveThirtyEight analyzed nutritional and lifestyle surveys from 54 individuals.](https://fivethirtyeight.com/features/you-cant-trust-what-you-read-about-nutrition/)  
-![](538.png)
 
-# Bonferroni correction
+</div>
+<div class="column" style="float:left; width: 50%">
+![](538.png){height=500px}
+</div>
 
-- For 1000 tests, use a threshold that is 1000X stricter. (Divide your cutoff by 1000. ex) 0.05/1000)
-- The tests do not have to have any relationship to each other.
-- Does this increase or decrease the probability of rejecting the null hypothesis?
-- FYI, sometimes a Bonferroni correction is too harsh and a *false discovery rate* correction can be more useful.
+# Multiple hypothesis correction
+
+## Bonferonni correction
+For `n` tests, use a threshold that is `n`X stricter. (Divide your cutoff by `n`)
+
+## False discovery rate
+Sometimes a Bonferonni correction is too harsh. Then, a false discovery rate correction may be more useful.
 
 # 3. `Python` - datatypes.{data-background-color="#d9d2e9"}
 
@@ -95,7 +100,7 @@ Defining the most appropriate null distribution is a relevant and tough problem 
 ### You can find an object's type using the type function.
 ```python
 x = 5
-type(5)
+type(x)
 ```
 </div>
 
@@ -171,6 +176,7 @@ DNA.find("A")  # 0
 </div>
 
 # String methods
+
 <div class="fragment" style="font-size: 60%;">
 ```python
 "GATTACA".find("ATT")  # 1
@@ -234,7 +240,7 @@ second_num = float(sys.argv[2])
 
 <div class="fragment" style="line-height: 0.9em; font-size: 50%;">
 ```python
-> python dna2rna.py  AGTCAGT
+> python dna2rna.py  ACTCAGT
 ACUCAGU
 > python dna2rna.py actcagt
 acucagu
@@ -244,17 +250,55 @@ ACUCagu
 </div>
 
 # Solution
-
 <div style="font-size: 60%;">
 ```python
 import sys  # pull from command line
-DNA = sys.argv[1]
+DNA = sys.argv[1]
 
 # replace T with U (DNA -> RNA)
-RNA = DNA.replace("T", "U")
-RNA = RNA.replace("t", "u")
-print(RNA)
-#RNA = DNA.replace("T", "U").replace("t", "u")
+RNA = DNA.replace("T", "U")
+RNA = DNA.replace("t", "u")
+print(RNA)
+
+# second solution
+RNA = DNA.replace("T", "U").replace("t", "u")
+```
+</div>
+
+# Sample problem
+
+- Write a program that takes a **DNA sequence as the first command line argument and prints the number of A’s, T’s, G’s, and C’s**
+
+<div class="fragment" style="font-size: 60%;">
+```python
+python dna-composition.py ACGTGCGTTAC
+2 A’s
+3 C’s
+3 G’s
+3 T’s
+```
+</div>
+
+# Solution
+
+<div style="font-size: 38%";>
+
+```python
+import sys
+
+# grab the DNA sequence
+
+DNA = sys.argv[1]
+
+# make it uppercase
+DNA = DNA.upper()
+
+# count
+A = DNA.count('A')
+C = DNA.count('C')
+G = DNA.count('G')
+T = DNA.count('T')
+print("{0} As\n{1} Cs\n{2 }Gs\n{3} Ts".format(A, C, G, T))
 ```
 </div>
 
@@ -276,7 +320,7 @@ list3  # [["sarah", "C", 3, 2.4], [1, 2, 3]]
 <div style="font-size: 60%;">
 ```python
 list1 = ["sarah", "C", 3, 2.4]
-list1[1] = "hilton
+list1[1] = "hilton"
 list1  # ["sarah", "hilton", 3, 2.4]
 ```
 </div>
@@ -316,6 +360,28 @@ L.sort()
 ```
 </div>
 
+# Sample problem
+
+- Write a program that takes a list of words and prints them out in sorted order
+
+<div class="fragment" style="line-height: 0.9em; font-size: 80%;">
+```python
+python sort_list.py z y x
+['x', 'y', 'z']
+```
+</div>
+
+# Solution
+<div style="font-size: 60%;">
+```python
+import sys
+iList = sys.argv[1:]
+iList.sort()
+print(iList)
+```
+</div>
+
+
 # Tuples
 
 - Tuples are immutable lists. You can't change them in place (like strings)
@@ -328,64 +394,6 @@ T[1] = 1  # Error
 
 T = T + T
 T  # (1,2,3,1,2,3)
-```
-</div>
-
-# Sample problem
-
-- Write a program that takes a list of words and prints them out in sorted order
-
-<div class="fragment" style="line-height: 0.9em; font-size: 80%;">
-```python
-> python sort_list.py hannah john george
-['george', 'hannah', 'john']
-```
-</div>
-
-# Solution
-<div style="font-size: 60%;">
-```python
-import sys
-iList = sys.argv[1:]  #  `1:` mean?
-iList.sort()
-print(iList)
-```
-</div>
-
-# Sample problem
-
-- Write a program that takes a **DNA sequence as the first command line argument and prints the number of A’s, T’s, G’s, and C’s**
-
-<div class="fragment" style="font-size: 60%;">
-```python
-> python dna-composition.py ACGTGCGTTAC
-2 A’s
-3 C’s
-3 G’s
-3 T’s
-```
-</div>
-
-# Solution
-
-<div style="font-size: 40%;">
-```python
-import sys
-
-# grab the DNA sequence  
-DNA = sys.argv[1]
-
-# make it uppercase
-DNA = DNA.upper()
-
-# count
-A = DNA.count('A')
-G = DNA.count('G')
-T = DNA.count('T')
-C = DNA.count('C')
-
-# print
-print("{0} As\n{1} Cs\n{2 }Gs\n{3} Ts".format(A, C, G, T))
 ```
 </div>
 
@@ -431,7 +439,7 @@ A does not occur at all.
 ```python
 import sys
 
-base = sys.argv[1]
+base = sys.argv[1]
 dna = sys.argv[2]
 
 # solution 1
@@ -454,5 +462,6 @@ else:
 
 # Week 2 tips + tricks
 - Integer division is different between `Python2` and `Python3`
-- `Python3` string formatting looks like this `"{0} {1} {0}".format("hello" "goodbye")`
--
+- `Python3` string formatting looks like this `"{0} {1} {0}".format("hello" "goodbye")` (`"hello goodbye hello"`)
+- Strings must begin *and* end with quotes. If you forget, you may get an error like `SyntaxError: EOL while scanning string literal”`
+- `Python` is 0 indexed. If `x = ["a", "b", "c"]` and you type `a[3]`, you may get an error like `IndexError: list index out of range`

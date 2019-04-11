@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Local alignments, P-values, Python datatypes">
+  <meta name="dcterms.date" content="2019-04-11">
+  <title>Quiz Section 2</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../skh.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Quiz Section 2</h1>
+  <p class="author">Local alignments, P-values, <code>Python</code> datatypes</p>
+  <p class="date">2019-04-11</p>
+</section>
+
+<section id="agenda" class="slide level1">
+<h1>Agenda</h1>
+<ol type="1">
+<li class="fragment">Review Dynamic Programming algorithm</li>
+<li class="fragment">Statistics: pvalues and multiple hypothesis testing</li>
+<li class="fragment">More <code>Python</code></li>
+</ol>
+</section>
+<section id="dynamic-programming" class="slide level1" data-background-color="#9fc5e8">
+<h1>1. Dynamic Programming</h1>
+</section>
+<section id="local-alignment" class="slide level1">
+<h1>Local alignment</h1>
+<ul>
+<li class="fragment">Please split into three groups<br />
+</li>
+<li class="fragment">Implement the Smith-Waterman algorithm on the board<br />
+</li>
+<li class="fragment">Report back your highest scoring local alignment</li>
+</ul>
+</section>
+<section id="local-alignment-data" class="slide level1">
+<h1>Local alignment data</h1>
+<p>Please align <code>GAGTA</code> and <code>AGTTA</code></p>
+<div class="column" style="float:left; width: 50%">
+<figure>
+<img src="sub_matrix.png" height="300" />
+</figure>
+</div>
+<div class="column" style="float:left; width: 50%">
+<figure>
+<img src="f_ij.png" />
+</figure>
+</div>
+</section>
+<section id="solution" class="slide level1">
+<h1>Solution</h1>
+<figure>
+<img src="alignment_solution.png" height="500" />
+</figure>
+</section>
+<section id="p-values" class="slide level1" data-background-color="#f9cb9c">
+<h1>2. P-values</h1>
+</section>
+<section id="what-do-p-values-tell-us" class="slide level1">
+<h1>What do P-values tell us?</h1>
+<ul>
+<li class="fragment">P-values tell you about expectations <em>under the null hypothesis</em></li>
+<li class="fragment">The null hypothesis is usually the <em>boring default</em>, the <em>devil's advocate position</em>, or <em>what you want to see if you can disprove</em>.</li>
+<li class="fragment">Examples of null hypotheses: &quot;there is <em>no</em> difference between treatment groups&quot;, &quot;life expectantancy <em>is not</em> changing over time, the coin <em>is not</em> weighted, the two sequences are <em>unrelated</em>.</li>
+</ul>
+</section>
+<section id="what-dont-p-values-tell-us" class="slide level1">
+<h1>What <em>don't</em> P-values tell us?</h1>
+<ul>
+<li class="fragment">P-values say nothing about the alternative hypothesis or how probable it is.</li>
+<li class="fragment">&quot;We reject the null hypothesis&quot; or &quot;We fail to reject the null hypothesis&quot;</li>
+</ul>
+</section>
+<section id="lady-tasting-tea-test" class="slide level1">
+<h1><a href="https://en.wikipedia.org/wiki/Lady_tasting_tea">&quot;lady tasting tea&quot; test</a></h1>
+<figure>
+<img src="tea.png" />
+</figure>
+</section>
+<section id="null-distribution" class="slide level1">
+<h1>Null distribution</h1>
+<p>What the data may look like if the null distribution is true. <em>How many guesses would be correct if the guess were random?</em></p>
+<h2 id="parametrized-probability-distribution">(1) Parametrized probability distribution</h2>
+<p>For the lady tasting tea test, this was a hypergeometric distribution<br />
+<em>What are some other distributions?</em></p>
+<h2 id="empirical-null-based-on-the-real-data">(2) Empirical null based on the real data</h2>
+<p>Shuffle the labels on your data</p>
+</section>
+<section id="how-do-you-define-your-null-distribution" class="slide level1">
+<h1>How do you define your null distribution?</h1>
+<p>Defining the most appropriate null distribution is a relevant and tough problem in a lot of computational biology!</p>
+</section>
+<section id="multiple-hypothesis-testing-is-dangerous" class="slide level1">
+<h1>Multiple hypothesis testing is dangerous!</h1>
+<div class="column" style="float:left; width: 50%">
+<p><a href="https://fivethirtyeight.com/features/you-cant-trust-what-you-read-about-nutrition/">FiveThirtyEight analyzed nutritional and lifestyle surveys from 54 individuals.</a></p>
+</div>
+<div class="column" style="float:left; width: 50%">
+<figure>
+<img src="538.png" height="500" />
+</figure>
+</div>
+</section>
+<section id="multiple-hypothesis-correction" class="slide level1">
+<h1>Multiple hypothesis correction</h1>
+<h2 id="bonferonni-correction">Bonferonni correction</h2>
+<p>For <code>n</code> tests, use a threshold that is <code>n</code>X stricter. (Divide your cutoff by <code>n</code>)</p>
+<h2 id="false-discovery-rate">False discovery rate</h2>
+<p>Sometimes a Bonferonni correction is too harsh. Then, a false discovery rate correction may be more useful.</p>
+</section>
+<section id="python---datatypes." class="slide level1" data-background-color="#d9d2e9">
+<h1>3. <code>Python</code> - datatypes.</h1>
+</section>
+<section id="variables-and-types" class="slide level1">
+<h1>Variables and types</h1>
+<h3 id="python-has-five-built-in-data-types">Python has <strong>five</strong> built-in data types</h3>
+<ul>
+<li class="fragment">Number</li>
+<li class="fragment">String</li>
+<li class="fragment">List</li>
+<li class="fragment">Tuple</li>
+<li class="fragment">Dictionary</li>
+</ul>
+<div class="fragment">
+<h3 id="you-can-find-an-objects-type-using-the-type-function.">You can find an object's type using the type function.</h3>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">5</span>
+<span class="bu">type</span>(x)</code></pre></div>
+</div>
+</section>
+<section id="numbers" class="slide level1">
+<h1>Numbers</h1>
+<ul>
+<li class="fragment">The type number has two subtypes: integers (<code>int</code>) and floats (<code>float</code>)</li>
+<li class="fragment">integer division is one of the changes between <code>Python2</code> and <code>Python3</code></li>
+<li class="fragment">To explicitly changes between types, use <code>int()</code> and <code>float()</code>. ex) <code>x = float(x)</code> will turn x into a <code>float</code>.</li>
+</ul>
+</section>
+<section id="operators" class="slide level1">
+<h1>Operators</h1>
+<table>
+<thead>
+<tr class="header">
+<th><code>Python</code> operator</th>
+<th>operation</th>
+<th>example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>**</code></td>
+<td>exponentiation</td>
+<td>3**2 = 9</td>
+</tr>
+<tr class="even">
+<td><code>*</code></td>
+<td>multiplication</td>
+<td>4*2 = 6</td>
+</tr>
+<tr class="odd">
+<td><code>/</code></td>
+<td>division</td>
+<td>4/2 = 2</td>
+</tr>
+<tr class="even">
+<td><code>+</code></td>
+<td>addition</td>
+<td>4+4 = 8</td>
+</tr>
+<tr class="odd">
+<td><code>-</code></td>
+<td>subtraction</td>
+<td>3-2=1</td>
+</tr>
+</tbody>
+</table>
+<p>Remember PENDAS?<br />
+<em>2*3**2 = ?</em></p>
+</section>
+<section id="strings" class="slide level1">
+<h1>Strings</h1>
+<ul>
+<li class="fragment">A series of characters starting or ending with single or double quotes.</li>
+<li class="fragment">Stored a a list of characters in memory.</li>
+<li class="fragment"><code>mystring = &quot;GATTACA&quot;</code></li>
+</ul>
+<div class="fragment">
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>G</td>
+<td>A</td>
+<td>T</td>
+<td>T</td>
+<td>A</td>
+<td>C</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="accessing-strings-indices-and-splices" class="slide level1">
+<h1>Accessing strings: indices and splices</h1>
+<ul>
+<li class="fragment">You can reference a single character using its <strong>index</strong><br />
+</li>
+<li class="fragment">You can reference a range of characters by creating a <strong>splice</strong>. The first number is <strong>inclusive</strong> and the second number is <strong>exclusive</strong>.</li>
+</ul>
+</section>
+<section id="accessing-strings-indices-and-splices-1" class="slide level1">
+<h1>Accessing strings: indices and splices</h1>
+<table>
+<thead>
+<tr class="header">
+<th>command</th>
+<th><code>G</code></th>
+<th><code>A</code></th>
+<th><code>T</code></th>
+<th><code>T</code></th>
+<th><code>A</code></th>
+<th><code>C</code></th>
+<th><code>A</code></th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>s[0]</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><code>G</code></td>
+</tr>
+<tr class="even">
+<td>s[:3]</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><code>GAT</code></td>
+</tr>
+<tr class="odd">
+<td>s[4:]</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td><code>ACA</code></td>
+</tr>
+<tr class="even">
+<td>s[3:5]</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td><code>TA</code></td>
+</tr>
+<tr class="odd">
+<td>s[:]</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td><code>GATTACA</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="string-functionality-built-in-functions" class="slide level1">
+<h1>String functionality (built-in functions)</h1>
+<div class="fragment" style="font-size: 50%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">len</span>(<span class="st">&quot;GATTACA&quot;</span>)  <span class="co"># 7</span>
+
+<span class="co">&quot;GAT&quot;</span> <span class="op">+</span> <span class="st">&quot;TACA&quot;</span>  <span class="co"># GATTACA</span>
+
+<span class="co">&quot;A&quot;</span> <span class="op">*</span> <span class="dv">10</span>  <span class="co"># AAAAAAAAAA</span>
+
+<span class="co">&quot;GAT&quot;</span> <span class="kw">in</span> <span class="st">&quot;GATTACA&quot;</span>  <span class="co"># True  </span>
+
+<span class="co">&quot;AGT&quot;</span> <span class="kw">in</span> <span class="st">&quot;GATTACA&quot;</span>  <span class="co"># False</span></code></pre></div>
+</div>
+</section>
+<section id="methods" class="slide level1">
+<h1>Methods</h1>
+<ul>
+<li class="fragment">In <code>Python</code>, a method is a function for a particular object type.</li>
+<li class="fragment">The syntax is <code>&lt;object&gt;.&lt;method&gt;(&lt;parameters)</code></li>
+</ul>
+<div class="fragment" style="line-height: 0.9em; font-size: 80%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">DNA <span class="op">=</span> <span class="st">&quot;AGT&quot;</span>
+DNA.find(<span class="st">&quot;A&quot;</span>)  <span class="co"># 0</span></code></pre></div>
+</div>
+</section>
+<section id="string-methods" class="slide level1">
+<h1>String methods</h1>
+<div class="fragment" style="font-size: 60%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">&quot;GATTACA&quot;</span>.find(<span class="st">&quot;ATT&quot;</span>)  <span class="co"># 1</span>
+<span class="co">&quot;GATTACA&quot;</span>.count(<span class="st">&quot;T&quot;</span>)  <span class="co"># 2</span>
+<span class="co">&quot;GATTACA&quot;</span>.lower()  <span class="co"># &#39;gattaca&#39;</span>
+<span class="co">&quot;gattaca&quot;</span>.upper()  <span class="co"># &#39;GATTACA&#39;</span>
+<span class="co">&quot;GATTACA&quot;</span>.replace(<span class="st">&quot;G&quot;</span>, <span class="st">&quot;U&quot;</span>)  <span class="co"># &#39;UATTACA&#39;</span>
+<span class="co">&quot;GATTACA&quot;</span>.replace(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;U&quot;</span>)  <span class="co"># &#39;GATTAUA&#39;</span>
+<span class="co">&quot;GATTACA&quot;</span>.replace(<span class="st">&quot;AT&quot;</span>, <span class="st">&quot;**&quot;</span>)  <span class="co"># &#39;G**TACA&#39;</span>
+<span class="co">&quot;GATTACA&quot;</span>.startswith(<span class="st">&quot;G&quot;</span>)  <span class="co"># True</span>
+<span class="co">&quot;GATTACA&quot;</span>.startswith(<span class="st">&quot;g&quot;</span>)  <span class="co"># False</span></code></pre></div>
+</div>
+</section>
+<section id="strings-are-immutable" class="slide level1">
+<h1>Strings are immutable</h1>
+<p>String methods do not modify the string; they return a new string.</p>
+<div class="fragment" style="font-size: 60%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">sequence <span class="op">=</span> <span class="st">&quot;ACGT&quot;</span>
+sequence.replace(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;G&quot;</span>)  <span class="co"># &#39;GCGT&#39;</span>
+<span class="bu">print</span>(sequence)  <span class="co"># &quot;ACGT&quot;</span>
+
+sequence <span class="op">=</span> <span class="st">&quot;ACGT&quot;</span>
+new_sequence <span class="op">=</span> sequence.replace(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;G&quot;</span>)
+<span class="bu">print</span>(new_sequence)  <span class="co"># &#39;GCGT&#39;</span></code></pre></div>
+</div>
+</section>
+<section id="reading-input-from-the-command-line" class="slide level1">
+<h1>Reading input from the command line</h1>
+<ul>
+<li class="fragment">When you type <code>python sarahs_program.py 2 3</code>, <code>Python</code> sees a list of strings <code>[&quot;sarahs_program.py&quot;, &quot;2&quot;, &quot;3&quot;]</code></li>
+<li class="fragment">You can access parts of this list using <code>sys.argv</code></li>
+<li class="fragment"><code>argv</code> is a <code>function</code> from the module <code>sys</code></li>
+<li class="fragment">You must <code>import</code> <code>sys</code> to use this function</li>
+</ul>
+</section>
+<section id="example-of-reading-input-from-the-command-line" class="slide level1">
+<h1>Example of reading input from the command line</h1>
+<p><code>python sarahs_program.py 2 3</code></p>
+<div class="fragment" style="line-height: 0.9em; font-size: 50%;">
+<p>Let's look inside <code>sarahs_program.py</code>:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">## Inside sarahs_program.py:</span>
+<span class="co"># Many functions only available via</span>
+<span class="co"># packages, you must import them</span>
+<span class="im">import</span> sys
+first_num <span class="op">=</span> <span class="bu">int</span>(sys.argv[<span class="dv">1</span>])
+second_num <span class="op">=</span> <span class="bu">float</span>(sys.argv[<span class="dv">2</span>])</code></pre></div>
+</div>
+</section>
+<section id="sample-problem" class="slide level1">
+<h1>Sample problem</h1>
+<ul>
+<li class="fragment">Write a program called dna2rna.py that <strong>reads a DNA sequence from the first command line argument, and then prints it as an RNA sequence.</strong><br />
+</li>
+<li class="fragment">Make sure it works for both uppercase and lowercase input.</li>
+</ul>
+<div class="fragment" style="line-height: 0.9em; font-size: 50%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;</span> python dna2rna.py  ACTCAGT
+ACUCAGU
+<span class="op">&gt;</span> python dna2rna.py actcagt
+acucagu
+<span class="op">&gt;</span> python dna2rna.py ACTCagt
+ACUCagu</code></pre></div>
+</div>
+</section>
+<section id="solution-1" class="slide level1">
+<h1>Solution</h1>
+<div style="font-size: 60%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> sys  <span class="co"># pull from command line</span>
+DNA <span class="op">=</span> sys.argv[<span class="dv">1</span>]
+
+<span class="co"># replace T with U (DNA -&gt; RNA)</span>
+RNA <span class="op">=</span> DNA.replace(<span class="st">&quot;T&quot;</span>, <span class="st">&quot;U&quot;</span>)
+RNA <span class="op">=</span> DNA.replace(<span class="st">&quot;t&quot;</span>, <span class="st">&quot;u&quot;</span>)
+<span class="bu">print</span>(RNA)
+
+<span class="co"># second solution</span>
+RNA <span class="op">=</span> DNA.replace(<span class="st">&quot;T&quot;</span>, <span class="st">&quot;U&quot;</span>).replace(<span class="st">&quot;t&quot;</span>, <span class="st">&quot;u&quot;</span>)</code></pre></div>
+</div>
+</section>
+<section id="sample-problem-1" class="slide level1">
+<h1>Sample problem</h1>
+<ul>
+<li class="fragment">Write a program that takes a <strong>DNA sequence as the first command line argument and prints the number of A’s, T’s, G’s, and C’s</strong></li>
+</ul>
+<div class="fragment" style="font-size: 60%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">python dna<span class="op">-</span>composition.py ACGTGCGTTAC
+<span class="dv">2</span> A’s
+<span class="dv">3</span> C’s
+<span class="dv">3</span> G’s
+<span class="dv">3</span> T’s</code></pre></div>
+</div>
+</section>
+<section id="solution-2" class="slide level1">
+<h1>Solution</h1>
+<div style="font-size: 38%" ;="">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> sys
+
+<span class="co"># grab the DNA sequence</span>
+
+DNA <span class="op">=</span> sys.argv[<span class="dv">1</span>]
+
+<span class="co"># make it uppercase</span>
+DNA <span class="op">=</span> DNA.upper()
+
+<span class="co"># count</span>
+A <span class="op">=</span> DNA.count(<span class="st">&#39;A&#39;</span>)
+C <span class="op">=</span> DNA.count(<span class="st">&#39;C&#39;</span>)
+G <span class="op">=</span> DNA.count(<span class="st">&#39;G&#39;</span>)
+T <span class="op">=</span> DNA.count(<span class="st">&#39;T&#39;</span>)
+<span class="bu">print</span>(<span class="st">&quot;</span><span class="sc">{0}</span><span class="st"> As</span><span class="ch">\n</span><span class="sc">{1}</span><span class="st"> Cs</span><span class="ch">\n</span><span class="st">{2 }Gs</span><span class="ch">\n</span><span class="sc">{3}</span><span class="st"> Ts&quot;</span>.<span class="bu">format</span>(A, C, G, T))</code></pre></div>
+</div>
+</section>
+<section id="lists" class="slide level1">
+<h1>Lists</h1>
+<p>Lists are an ordered series of objects</p>
+<div style="font-size: 58%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">list1 <span class="op">=</span> [<span class="st">&quot;sarah&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="dv">3</span>, <span class="fl">2.4</span>]
+list2 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]
+list3 <span class="op">=</span> [list1, list2]
+list3  <span class="co"># [[&quot;sarah&quot;, &quot;C&quot;, 3, 2.4], [1, 2, 3]]</span></code></pre></div>
+</div>
+</section>
+<section id="unlike-strings-lists-are-mutable" class="slide level1">
+<h1>Unlike strings, lists are mutable</h1>
+<div style="font-size: 60%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">list1 <span class="op">=</span> [<span class="st">&quot;sarah&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="dv">3</span>, <span class="fl">2.4</span>]
+list1[<span class="dv">1</span>] <span class="op">=</span> <span class="st">&quot;hilton&quot;</span>
+list1  <span class="co"># [&quot;sarah&quot;, &quot;hilton&quot;, 3, 2.4]</span></code></pre></div>
+</div>
+</section>
+<section id="expanding-lists" class="slide level1">
+<h1>Expanding lists</h1>
+<div style="font-size: 60%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">newlist <span class="op">=</span> []
+<span class="bu">print</span>(newlist)  <span class="co"># []</span>
+
+newlist.append(<span class="dv">4</span>)
+<span class="bu">print</span>(newlist)  <span class="co"># [4]</span>
+
+newlist.extend([<span class="dv">4</span>,<span class="dv">5</span>])
+<span class="bu">print</span>(newlist)  <span class="co"># [4,4,5]</span></code></pre></div>
+</div>
+</section>
+<section id="more-list-methods" class="slide level1">
+<h1>More list methods</h1>
+<div style="font-size: 50%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># add x to the end of L</span>
+L.append(x)  
+<span class="co"># add x and y to L</span>
+L.extend([x,y])
+<span class="co"># count how many times x is in L</span>
+L.count(x)  
+ <span class="co"># give the location of x</span>
+L.index(x)
+<span class="co"># remove first occurrence of x</span>
+L.remove(x)  
+<span class="co"># reverse order of elements of L</span>
+L.reverse(x)  
+ <span class="co"># sort L</span>
+L.sort()</code></pre></div>
+</div>
+</section>
+<section id="sample-problem-2" class="slide level1">
+<h1>Sample problem</h1>
+<ul>
+<li class="fragment">Write a program that takes a list of words and prints them out in sorted order</li>
+</ul>
+<div class="fragment" style="line-height: 0.9em; font-size: 80%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">python sort_list.py z y x
+[<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;z&#39;</span>]</code></pre></div>
+</div>
+</section>
+<section id="solution-3" class="slide level1">
+<h1>Solution</h1>
+<div style="font-size: 60%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> sys
+iList <span class="op">=</span> sys.argv[<span class="dv">1</span>:]
+iList.sort()
+<span class="bu">print</span>(iList)</code></pre></div>
+</div>
+</section>
+<section id="tuples" class="slide level1">
+<h1>Tuples</h1>
+<ul>
+<li class="fragment">Tuples are immutable lists. You can't change them in place (like strings)</li>
+<li class="fragment">If you want to change them, you have to assign them to a new tuple</li>
+</ul>
+<div class="fragment" style="line-height: 0.9em; font-size: 60%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">T <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)
+T[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span>  <span class="co"># Error</span>
+
+T <span class="op">=</span> T <span class="op">+</span> T
+T  <span class="co"># (1,2,3,1,2,3)</span></code></pre></div>
+</div>
+</section>
+<section id="more-on-conditionals" class="slide level1">
+<h1>More on conditionals</h1>
+<div style="font-size: 60%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">DNA <span class="op">=</span> <span class="st">&quot;AGTGGT&quot;</span>
+<span class="cf">if</span> (DNA.startswith(<span class="st">&quot;A&quot;</span>)):
+    <span class="bu">print</span>(<span class="st">&quot;Starts with A&quot;</span>)</code></pre></div>
+</div>
+<div class="fragment" style="line-height: 0.9em; font-size: 60%;">
+<pre><code>if (&lt;test evaluates to true&gt;):
+  &lt;execute this block of code&gt;</code></pre>
+</div>
+</section>
+<section id="more-on-conditionals-1" class="slide level1">
+<h1>More on conditionals</h1>
+<ul>
+<li class="fragment">A block is a group of lines of code that belong together.<br />
+</li>
+<li class="fragment"><code>Python</code> uses indentation to keep track of blocks.</li>
+<li class="fragment">You can use any number of spaces (or a tab) to indicate blocks, but you must be consistent.</li>
+<li class="fragment">An unindented or blank line indicates the end of a block.</li>
+<li class="fragment">In interactive mode, the ellipse indicates that you are inside a block.</li>
+</ul>
+</section>
+<section id="sample-problem-3" class="slide level1">
+<h1>Sample problem</h1>
+<ul>
+<li class="fragment">Write a program find-base.py that <strong>takes as input a DNA sequence and a nucleotide.</strong> The program should <strong>print where the nucleotide occurs in the sequence, or a message saying it’s not there.</strong></li>
+</ul>
+<div class="fragment" style="font-size: 60%;">
+<pre><code>&gt; python find-base.py A GTAGCTA
+A occurs at position 3.
+&gt; python find-base.py A GTGCT
+A does not occur at all.</code></pre>
+</div>
+</section>
+<section id="solution-4" class="slide level1">
+<h1>Solution</h1>
+<div style="font-size: 32%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> sys
+
+base <span class="op">=</span> sys.argv[<span class="dv">1</span>]
+dna <span class="op">=</span> sys.argv[<span class="dv">2</span>]
+
+<span class="co"># solution 1</span>
+position <span class="op">=</span> dna.find(base)
+<span class="cf">if</span> position <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>:
+  <span class="bu">print</span>(<span class="st">&quot;</span><span class="sc">{0}</span><span class="st"> does not occur at all.&quot;</span>.<span class="bu">format</span>(base))
+<span class="cf">else</span>:
+  <span class="bu">print</span>(<span class="st">&quot;</span><span class="sc">{0}</span><span class="st"> occus in position </span><span class="sc">{1}</span><span class="st">&quot;</span>.<span class="bu">format</span>(base, position<span class="op">+</span><span class="dv">1</span>))
+
+<span class="co"># solution 2</span>
+<span class="cf">if</span> base <span class="kw">in</span> dna:
+  position <span class="op">=</span> dna.find(base) <span class="op">+</span> <span class="dv">1</span>
+  <span class="bu">print</span>(<span class="st">&quot;</span><span class="sc">{0}</span><span class="st"> occus in position </span><span class="sc">{1}</span><span class="st">&quot;</span>.<span class="bu">format</span>(base, position))
+<span class="cf">else</span>:
+  <span class="bu">print</span>(<span class="st">&quot;</span><span class="sc">{0}</span><span class="st"> does not occur at all.&quot;</span>.<span class="bu">format</span>(base))</code></pre></div>
+</div>
+</section>
+<section id="questions-skhiltonuw.edu" class="slide level1" data-background-color="#b6d7a8">
+<h1>questions? skhilton@uw.edu</h1>
+</section>
+<section id="week-2-tips-tricks" class="slide level1">
+<h1>Week 2 tips + tricks</h1>
+<ul>
+<li class="fragment">Integer division is different between <code>Python2</code> and <code>Python3</code></li>
+<li class="fragment"><code>Python3</code> string formatting looks like this <code>&quot;{0} {1} {0}&quot;.format(&quot;hello&quot; &quot;goodbye&quot;)</code> (<code>&quot;hello goodbye hello&quot;</code>)</li>
+<li class="fragment">Strings must begin <em>and</em> end with quotes. If you forget, you may get an error like <code>SyntaxError: EOL while scanning string literal”</code></li>
+<li class="fragment"><code>Python</code> is 0 indexed. If <code>x = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</code> and you type <code>a[3]</code>, you may get an error like <code>IndexError: list index out of range</code></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/lib/js/head.min.js"></script>
+  <script src="../reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+              { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

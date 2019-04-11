@@ -19,7 +19,7 @@ def make_md(title, html, pdf, fname):
 
 
 def main():
-    clean = True
+    clean = False
     for week_dir in glob.glob("week*/"):
         print(week_dir)
         os.chdir(week_dir)
@@ -36,7 +36,7 @@ def main():
         title = f"week {week} ({date})"
         print(title)
         # define commands
-        html_CMD = ["pandoc", "-t", "revealjs", "-c", "../skh.css", "-o",
+        html_CMD = ["pandoc", "--mathjax", "-t", "revealjs", "-c", "../skh.css", "-o",
                     html_fname, md_fname, "-V", "revealjs-url=../reveal.js", "-i"]
         pdf_CMD = ["pandoc", md_fname, "--latex-engine=xelatex", "-o",
                    pdf_fname, "-V", "geometry:margin=1in", "--variable",
