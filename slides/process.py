@@ -54,6 +54,10 @@ def main():
                 subprocess.check_call(pdf_CMD)
             else:
                 print(f"Already found file {pdf_fname}")
+            if not os.path.isfile(toc_fname):
+                make_md(title, html_fname, pdf_fname, toc_fname)
+            else:
+                print(f"Already found file {pdf_fname}")
         os.chdir("../")
         print(os.getcwd())
         print("done")
