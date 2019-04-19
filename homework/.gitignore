@@ -1,3 +1,4 @@
 *.
 !.gitignore
 *key*
+skh_notes/
