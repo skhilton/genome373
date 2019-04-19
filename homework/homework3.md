@@ -8,7 +8,7 @@ problem set:
 [pdf](homework3.pdf)
 
 extra material:   
-[Hug *et al.,* 2016](hug2016new)  
+[Hug *et al.,* 2016](hug2016new.pdf)  
 
 You should turn in two files to canvas:   
 1. Answers to the problem set as a word doc or a pdf.   
