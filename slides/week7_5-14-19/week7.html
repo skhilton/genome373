@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="more functions!">
+  <meta name="dcterms.date" content="2019-05-16">
+  <title>Quiz Section Week 7</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../skh.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Quiz Section Week 7</h1>
+  <p class="author">more functions!</p>
+  <p class="date">2019-05-16</p>
+</section>
+
+<section id="python-1-random-numbers" class="slide level1" data-background-color="#9fc5e8">
+<h1>Python 1: random numbers</h1>
+</section>
+<section id="why-would-we-want-random-numbers-in-our-analysis" class="slide level1">
+<h1>Why would we want random numbers in our analysis?</h1>
+</section>
+<section id="section" class="slide level1">
+<h1></h1>
+<figure>
+<img src="chaos.gif" />
+</figure>
+</section>
+<section id="why-would-we-want-random-numbers-in-our-analysis-1" class="slide level1">
+<h1>Why would we want random numbers in our analysis?</h1>
+<ul>
+<li class="fragment">random sequences for null distribution in a sequence alignment</li>
+<li class="fragment">A Markov chain that changes states probabilistically</li>
+<li class="fragment">allele frequencies in a pop gen simulator</li>
+</ul>
+</section>
+<section id="python-module-random" class="slide level1">
+<h1><code>Python</code> module <code>random</code></h1>
+<p>The <code>random</code> function of the <code>Python</code> module <code>random</code> returns a uniformly distributed random value between 0 and 1.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> random
+r <span class="op">=</span> random.random()
+<span class="bu">print</span>(r)
+<span class="fl">0.261256363123</span></code></pre></div>
+</section>
+<section id="uniform-distribution" class="slide level1">
+<h1>Uniform distribution</h1>
+<figure>
+<img src="random.png" height="500" />
+</figure>
+</section>
+<section id="how-can-we-use-random-numbers-to-simulate-coin-flips" class="slide level1">
+<h1>How can we use random numbers to simulate coin flips?</h1>
+</section>
+<section id="modeling-two-equally-probable-choices" class="slide level1">
+<h1>Modeling two equally probable choices</h1>
+<figure>
+<img src="coinflip.png" height="400" />
+</figure>
+</section>
+<section id="code" class="slide level1">
+<h1>code</h1>
+<div class="fragment" style="font-size: 60%;">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> random
+
+<span class="co"># return heads or tails</span>
+<span class="kw">def</span> coinflip():
+    f <span class="op">=</span> random.random()
+    <span class="cf">if</span> f <span class="op">&gt;</span> <span class="fl">0.5</span>:
+        <span class="cf">return</span> <span class="st">&quot;T&quot;</span>
+    <span class="cf">else</span>:
+        <span class="cf">return</span> <span class="st">&quot;H&quot;</span></code></pre></div>
+</div>
+</section>
+<section id="simulation-test" class="slide level1">
+<h1>Simulation test</h1>
+</section>
+<section id="how-could-we-use-random-numbers-to-simulate-a-dice-roll" class="slide level1">
+<h1>How could we use random numbers to simulate a dice roll?</h1>
+</section>
+<section id="how-random-are-we-talking" class="slide level1">
+<h1>How &quot;random&quot; are we talking?</h1>
+<p><strong><em>pseudorandom</em></strong></p>
+<p><code>random.random()</code> <em>approximates</em> random number generation based on a starting point – a seed. If you want to reproducibly produce the same “random” set of numbers twice, you can set the seed with <code>random.seed(100)</code></p>
+</section>
+<section id="why-use-a-seed" class="slide level1">
+<h1>Why use a seed?</h1>
+<ul>
+<li class="fragment">When running an analysis with any sort of randomness, you want to set a seed so your results are reproducible.</li>
+<li class="fragment">You should also run the analysis on <em>multiple</em> seeds to make sure the results are robust</li>
+</ul>
+</section>
+<section id="python-2-returning-values" class="slide level1" data-background-color="#9fc5e8">
+<h1>Python 2: returning values</h1>
+</section>
+<section id="why-use-functions" class="slide level1">
+<h1>Why use functions?</h1>
+</section>
+<section id="what-does-this-function-do" class="slide level1">
+<h1>What does this function do?</h1>
+<div style="font-size: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> CalcSum(a_list):
+    <span class="bu">sum</span> <span class="op">=</span> <span class="dv">0</span>
+    <span class="cf">for</span> item <span class="kw">in</span> a_list:  
+        <span class="bu">sum</span> <span class="op">+=</span> item
+    <span class="cf">return</span> <span class="bu">sum</span></code></pre></div>
+</div>
+<div class="fragment" style="font-size: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">9</span>]
+<span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(CalcSum(my_list))
+<span class="dv">15</span></code></pre></div>
+</div>
+</section>
+<section id="returning-multiple-values" class="slide level1">
+<h1>Returning multiple values</h1>
+<p>modify the code to return the product and the sum</p>
+<div class="column" style="float:left; width: 40%; font-size: 40%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> CalcSumAndProd(a_list):  
+    <span class="bu">sum</span> <span class="op">=</span> <span class="dv">0</span>
+    prod <span class="op">=</span> <span class="dv">1</span>
+    <span class="cf">for</span> item <span class="kw">in</span> a_list:  
+        <span class="bu">sum</span> <span class="op">+=</span> item  
+        prod <span class="op">*=</span> item
+    <span class="cf">return</span> [<span class="bu">sum</span>, prod]</code></pre></div>
+</div>
+<div class="column" style="float:left; width: 60%; font-size: 40%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">9</span>]
+<span class="op">&gt;&gt;&gt;</span> res <span class="op">=</span> CalcSumAndProd(my_list)
+<span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(res)
+[<span class="dv">15</span>, <span class="dv">54</span>]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">9</span>]
+<span class="op">&gt;&gt;&gt;</span> [s, p] <span class="op">=</span> CalcSumAndProd(my_list)
+<span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(s)
+<span class="dv">15</span></code></pre></div>
+</div>
+</section>
+<section id="returning-lists" class="slide level1">
+<h1>Returning lists</h1>
+<div style="font-size: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> incrementEachElement(a_list):  
+    new_list <span class="op">=</span> []
+    <span class="cf">for</span> item <span class="kw">in</span> a_list:  
+        new_list.append(item<span class="op">+</span><span class="dv">1</span>)
+    <span class="cf">return</span> new_list
+
+<span class="co"># use function</span>
+my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">20</span>, <span class="dv">34</span>, <span class="dv">8</span>]
+<span class="bu">print</span>(my_list)
+my_incremended_list <span class="op">=</span> incrementEachElement(my_list)
+<span class="bu">print</span>(my_incremended_list)</code></pre></div>
+</div>
+<ul>
+<li class="fragment">uh oh! What could cause a problem here?</li>
+</ul>
+</section>
+<section id="returning-lists-modified" class="slide level1">
+<h1>Returning lists (modified)</h1>
+<div style="font-size: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> incrementEachElement(a_list):  
+    new_list <span class="op">=</span> []
+    <span class="cf">for</span> item <span class="kw">in</span> a_list:  
+        new_list.append(item<span class="op">+</span><span class="dv">1</span>)
+    <span class="cf">return</span> new_list
+
+<span class="co"># use function</span>
+my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">20</span>, <span class="dv">34</span>, <span class="dv">8</span>]
+<span class="bu">print</span>(my_list)
+my_list <span class="op">=</span> incrementEachElement(my_list)
+<span class="bu">print</span>(my_list)</code></pre></div>
+</div>
+</section>
+<section id="whats-going-to-happen" class="slide level1">
+<h1>What's going to happen?</h1>
+<div style="font-size: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> incrementEachElement(a_list):
+    <span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(a_list)):
+        a_list[index] <span class="op">+=</span><span class="dv">1</span>
+
+<span class="co"># use function</span>
+my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">20</span>, <span class="dv">34</span>, <span class="dv">8</span>]
+<span class="bu">print</span>(my_list)
+incrementEachElement(my_list)
+<span class="bu">print</span>(my_list)</code></pre></div>
+</div>
+</section>
+<section id="if-that-works-why-doesnt-this" class="slide level1">
+<h1>If that works, why doesn't this?!?</h1>
+<div style="font-size: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> doubleup(a_string):
+    a_string <span class="op">=</span> a_string <span class="op">+</span> a_string
+
+<span class="co"># use function</span>
+my_string <span class="op">=</span> <span class="st">&quot;hello&quot;</span>
+<span class="bu">print</span>(my_string)
+doubleup(my_string)
+<span class="bu">print</span>(my_string)</code></pre></div>
+</div>
+</section>
+<section id="whats-the-difference-between-lists-and-stringstuples" class="slide level1">
+<h1>What's the difference between lists and strings/tuples?</h1>
+</section>
+<section id="pass-by-value-vs.-pass-by-reference" class="slide level1">
+<h1>pass-by-value vs. pass-by-reference</h1>
+<p>Calling strategies</p>
+<div style="font-size: 65%">
+<p><strong>pass-by-value</strong><br />
+- The value of the argument is copied into a local variable inside the function<br />
+- C, Scheme, C++</p>
+<p><strong>pass-by-reference</strong><br />
+- The function receives an implicit reference to the variable used as argument, rather than a copy of its value<br />
+- &quot;reference&quot; means location in memory<br />
+- Perl, VB, C++</p>
+</div>
+<p>Which one is python?</p>
+</section>
+<section id="will-this-affect-my-code" class="slide level1">
+<h1>Will this affect <em>my</em> code?</h1>
+<p><strong>It could help!</strong><br />
+- Handling large datasets<br />
+- &quot;in place&quot; changes make sense</p>
+<p><strong>It could cause problems!</strong><br />
+- don't lose the reference!<br />
+- don't change an argument by mistake<br />
+- (good place to start debugging)</p>
+</section>
+<section id="python-3-arguments" class="slide level1" data-background-color="#9fc5e8">
+<h1>Python 3: arguments</h1>
+</section>
+<section id="required-arguments" class="slide level1">
+<h1>required arguments</h1>
+<p>What are the arguments in this function?</p>
+<div style="font-size: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> printMulti(text, n):
+    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):  
+        <span class="bu">print</span>(text)</code></pre></div>
+</div>
+<div class="fragment" style="font-size: 50%">
+<p>What happens if we call</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">printMulti(<span class="st">&quot;blah&quot;</span>, <span class="dv">4</span>)</code></pre></div>
+</div>
+<div class="fragment" style="font-size: 50%">
+<p>What happens if we call</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">printMulti(<span class="st">&quot;blah&quot;</span>)</code></pre></div>
+</div>
+</section>
+<section id="default-arguments" class="slide level1">
+<h1>default arguments</h1>
+<div style="font-size: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> printMulti(text, n<span class="op">=</span><span class="dv">3</span>):
+    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):  
+        <span class="bu">print</span>(text)</code></pre></div>
+</div>
+<div class="fragment" style="font-size: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> printMulti(“Bla”,<span class="dv">4</span>)
+Bla  
+Bla  
+Bla  
+Bla</code></pre></div>
+</div>
+<div class="fragment" style="font-size: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> printMulti(“Yada”)  
+Yada
+Yada
+Yada</code></pre></div>
+</div>
+</section>
+<section id="default-arguments-1" class="slide level1">
+<h1>default arguments</h1>
+<p>Default arguments are useful when you have <em>many</em> arguments, most of which will not be changed by the user</p>
+<div class="fragment" style="font-size: 40%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> runBlast(fasta_file, costGap<span class="op">=</span><span class="dv">10</span>, E<span class="op">=</span><span class="fl">10.0</span>, desc<span class="op">=</span><span class="dv">100</span>,
+            max_align<span class="op">=</span><span class="dv">25</span>, matrix<span class="op">=</span>“BLOSUM62”, sim<span class="op">=</span><span class="fl">0.7</span>, corr<span class="op">=</span><span class="va">True</span>):
+    <span class="op">&lt;</span>runBlast code here<span class="op">&gt;</span></code></pre></div>
+</div>
+<div class="fragment" style="font-size: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> runBlast(“my_fasta.txt”)</code></pre></div>
+</div>
+<div class="fragment" style="font-size: 40%">
+<p>vs</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> runBlast(“my_fasta.txt”, <span class="dv">10</span>, <span class="fl">10.0</span>, <span class="dv">100</span>, <span class="dv">25</span>, “BLOSUM62”, <span class="fl">0.7</span>,  <span class="va">True</span>)</code></pre></div>
+</div>
+</section>
+<section id="keyword-arguments" class="slide level1">
+<h1>keyword arguments</h1>
+<div style="font-size: 50%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> runBlast(fasta_file, costGap<span class="op">=</span><span class="dv">10</span>, E<span class="op">=</span><span class="fl">10.0</span>, desc<span class="op">=</span><span class="dv">100</span>,  
+                        max_align<span class="op">=</span><span class="dv">25</span>, matrix<span class="op">=</span>“BLOSUM62”, sim<span class="op">=</span><span class="fl">0.7</span>, corr<span class="op">=</span><span class="va">True</span>):
+    <span class="op">&lt;</span>runBlast code here<span class="op">&gt;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> runBlast(“my_fasta.txt”, matrix<span class="op">=</span>“PAM40”)</code></pre></div>
+</div>
+</section>
+<section id="questions-skhiltonuw.edu" class="slide level1" data-background-color="#9fc5e8">
+<h1>questions? skhilton@uw.edu</h1>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/lib/js/head.min.js"></script>
+  <script src="../reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+              { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
