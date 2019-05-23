@@ -17,4 +17,4 @@ You should turn in two files to canvas:
 
 *if you have problems downloading any of the above documents, please email me (skhilton@uw.edu)*
 
-[key](homework6_key_students.pdf)
+[key](homework6_answers_students.pdf)
