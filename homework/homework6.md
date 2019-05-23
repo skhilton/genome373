@@ -16,3 +16,5 @@ You should turn in two files to canvas:
 2. Your python script as a .py. Please follow the formatting guidelines for the script.   
 
 *if you have problems downloading any of the above documents, please email me (skhilton@uw.edu)*
+
+[key](homework6_key_students.pdf)
