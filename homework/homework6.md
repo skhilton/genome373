@@ -18,4 +18,4 @@ You should turn in two files to canvas:
 *if you have problems downloading any of the above documents, please email me (skhilton@uw.edu)*
 
 [key](homework6_answers_students.pdf)  
-[programming solutions](homework6_answers_students.py)
+[programming solutions](hw6_answers_students.py)
