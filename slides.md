@@ -12,3 +12,4 @@ Here are the weekly quiz section slides:
 * [Week 4 (4-25-19)](slides/week4_4-25-2019/week4_toc.md)
 * [Week 6 (5-9-19)](slides/week6_5-9-2019/week6_toc.md)
 * [Week 7 (5-16-19)](slides/week7_5-16-2019/week7_toc.md)
+* [Week 8 (5-23-19)](slides/week8_5-23-2019/week8_toc.md)
