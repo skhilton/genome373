@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="recursion">
+  <meta name="dcterms.date" content="2019-05-23">
+  <title>Quiz Section Week 8</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../skh.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Quiz Section Week 8</h1>
+  <p class="author">recursion</p>
+  <p class="date">2019-05-23</p>
+</section>
+
+<section id="recursion" class="slide level1" data-background-color="#9fc5e8">
+<h1>recursion</h1>
+</section>
+<section id="recursion-1" class="slide level1">
+<h1>Recursion</h1>
+<blockquote>
+<p>a recursive algorithm or function is one that calls itself</p>
+</blockquote>
+</section>
+<section id="ex-calculate-a-factorial" class="slide level1">
+<h1>Ex) calculate a factorial</h1>
+<p>n! = n * (n-1) * ... * 2 * 1</p>
+</section>
+<section id="non-recursive-function" class="slide level1">
+<h1>non-recursive function</h1>
+<div style="font-size: 80%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> factorial(n):
+  f <span class="op">=</span> <span class="dv">1</span>
+  <span class="cf">for</span> <span class="kw">in</span> <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n<span class="op">+</span><span class="dv">1</span>):
+    f <span class="op">*=</span> i
+  <span class="cf">return</span> f</code></pre></div>
+</div>
+</section>
+<section id="recursive-function" class="slide level1">
+<h1>recursive function</h1>
+<div style="font-size: 80%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> factorial(n):
+  <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:
+    <span class="cf">return</span> <span class="dv">1</span>
+  <span class="cf">else</span>:
+    <span class="cf">return</span> n <span class="op">*</span> factorial (n<span class="op">-</span><span class="dv">1</span>)</code></pre></div>
+</div>
+<p><em>what make's this function recursive?</em></p>
+</section>
+<section id="factorial-example-flow-chart" class="slide level1">
+<h1>factorial example flow chart</h1>
+<figure>
+<img src="factorial.png" />
+</figure>
+</section>
+<section id="base-case" class="slide level1">
+<h1>base case</h1>
+<ul>
+<li class="fragment">bases cases are easily computed expression on which <em>no</em> recursion is called.</li>
+<li class="fragment">in the factorial example, when <code>n == 0</code></li>
+</ul>
+</section>
+<section id="key-features-of-a-recursive-algorithm" class="slide level1">
+<h1>Key features of a recursive algorithm</h1>
+<ol type="1">
+<li class="fragment">there are one more base cases for which no recursion is applied</li>
+<li class="fragment">all recursion chains end up at one or more base cases</li>
+</ol>
+</section>
+<section id="merge-sort" class="slide level1">
+<h1>merge-sort</h1>
+<p><strong>objective</strong> sort a list of numbers (pile of index cards)</p>
+<ol type="1">
+<li class="fragment">split cards into two halves</li>
+<li class="fragment">sort 1st half (using merge-sort)</li>
+<li class="fragment">sort 2nd half (using merge-sort)</li>
+<li class="fragment">merge halves</li>
+</ol>
+<p><em>what is the base case?</em><br />
+<em>what is efficient about the merge step?</em></p>
+</section>
+<section id="recursion-takeaways" class="slide level1">
+<h1>recursion takeaways</h1>
+<ul>
+<li class="fragment">tool in your problem solving toolbox</li>
+<li class="fragment">natural and/or elegant solution</li>
+<li class="fragment">costly overhead to call a function</li>
+<li class="fragment">often loops are preferred</li>
+</ul>
+</section>
+<section id="merge-sort-pseudocode" class="slide level1">
+<h1><a href="(https://interactivepython.org/runestone/static/pythonds/SortSearch/TheMergeSort.html)">merge-sort pseudocode</a></h1>
+<div style="font-size: 20%">
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> mergeSort(alist):
+    <span class="bu">print</span>(<span class="st">&quot;Splitting &quot;</span>,alist)
+    <span class="cf">if</span> <span class="bu">len</span>(alist)<span class="op">&gt;</span><span class="dv">1</span>:
+        mid <span class="op">=</span> <span class="bu">len</span>(alist)<span class="op">//</span><span class="dv">2</span>
+        lefthalf <span class="op">=</span> alist[:mid]
+        righthalf <span class="op">=</span> alist[mid:]
+
+        mergeSort(lefthalf)
+        mergeSort(righthalf)
+
+        i<span class="op">=</span><span class="dv">0</span>
+        j<span class="op">=</span><span class="dv">0</span>
+        k<span class="op">=</span><span class="dv">0</span>
+        <span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(lefthalf) <span class="kw">and</span> j <span class="op">&lt;</span> <span class="bu">len</span>(righthalf):
+            <span class="cf">if</span> lefthalf[i] <span class="op">&lt;</span> righthalf[j]:
+                alist[k]<span class="op">=</span>lefthalf[i]
+                i<span class="op">=</span>i<span class="op">+</span><span class="dv">1</span>
+            <span class="cf">else</span>:
+                alist[k]<span class="op">=</span>righthalf[j]
+                j<span class="op">=</span>j<span class="op">+</span><span class="dv">1</span>
+            k<span class="op">=</span>k<span class="op">+</span><span class="dv">1</span>
+
+        <span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(lefthalf):
+            alist[k]<span class="op">=</span>lefthalf[i]
+            i<span class="op">=</span>i<span class="op">+</span><span class="dv">1</span>
+            k<span class="op">=</span>k<span class="op">+</span><span class="dv">1</span>
+
+        <span class="cf">while</span> j <span class="op">&lt;</span> <span class="bu">len</span>(righthalf):
+            alist[k]<span class="op">=</span>righthalf[j]
+            j<span class="op">=</span>j<span class="op">+</span><span class="dv">1</span>
+            k<span class="op">=</span>k<span class="op">+</span><span class="dv">1</span>
+    <span class="bu">print</span>(<span class="st">&quot;Merging &quot;</span>,alist)
+
+alist <span class="op">=</span> [<span class="dv">54</span>,<span class="dv">26</span>,<span class="dv">93</span>,<span class="dv">17</span>,<span class="dv">77</span>,<span class="dv">31</span>,<span class="dv">44</span>,<span class="dv">55</span>,<span class="dv">20</span>]
+mergeSort(alist)
+<span class="bu">print</span>(alist)</code></pre></div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/lib/js/head.min.js"></script>
+  <script src="../reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+              { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
