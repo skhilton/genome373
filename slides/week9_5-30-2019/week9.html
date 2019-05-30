@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="comp bio tools">
+  <meta name="dcterms.date" content="2019-05-30">
+  <title>Quiz Section Week 9</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../skh.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Quiz Section Week 9</h1>
+  <p class="author">comp bio tools</p>
+  <p class="date">2019-05-30</p>
+</section>
+
+<section id="practical-computing" class="slide level1">
+<h1>practical computing</h1>
+<figure>
+<img src="slack.png" />
+</figure>
+</section>
+<section id="version-control-git" class="slide level1" data-background-color="#9fc5e8">
+<h1>version control / <code>git</code></h1>
+</section>
+<section id="why-version-control" class="slide level1">
+<h1>why version control?</h1>
+<figure>
+<img src="naming.png" />
+</figure>
+</section>
+<section id="why-version-control-1" class="slide level1">
+<h1>why version control?</h1>
+<div class="fragment">
+<div class="column" style="float:left; width: 40%">
+<ul>
+<li class="fragment">facilitate collaboration</li>
+<li class="fragment">restore previous versions</li>
+<li class="fragment">backup your work</li>
+<li class="fragment">track your code as your write it</li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<div class="column" style="float: left; width: 60%">
+<figure>
+<img src="git_diff.png" />
+</figure>
+</div>
+</div>
+</section>
+<section id="git-vs.-github" class="slide level1">
+<h1><code>git</code> vs. <code>Github</code></h1>
+<ul>
+<li class="fragment"><code>Git</code> is the version control software - it’s the software keeping track of the changes/versions</li>
+<li class="fragment"><code>Github</code> is a website that allows you to store the version information off your computer</li>
+<li class="fragment"><code>Github</code> users have IDs (ex. skhilton)</li>
+<li class="fragment"><code>Github</code> accounts are free</li>
+</ul>
+</section>
+<section id="github-website-vocab" class="slide level1">
+<h1><code>Github</code> website vocab</h1>
+<ul>
+<li class="fragment">users</li>
+<li class="fragment">repos</li>
+</ul>
+</section>
+<section id="clone-push-pull" class="slide level1">
+<h1><code>clone</code>, <code>push</code>, <code>pull</code></h1>
+<div class="fragment">
+<div class="column" style="float:left; width: 60%">
+<figure>
+<img src="github_diagram.png" />
+</figure>
+</div>
+</div>
+<div class="fragment">
+<div class="column" style="float: left; width: 40%">
+<p><strong>vocab</strong><br />
+remote, local</p>
+<p><a href="https://infx-web-win17.github.io/tutorials/managing-files/">source</a></p>
+</div>
+</div>
+</section>
+<section id="how-to-clone-a-repo" class="slide level1">
+<h1>how to clone a repo</h1>
+<p><code>git clone &lt;repo address&gt;</code></p>
+</section>
+<section id="common-sequence-of-commands" class="slide level1">
+<h1>common sequence of commands</h1>
+<div style="font-size: 80%">
+<p><strong>adding local files to remote repo</strong><br />
+<code>git status</code></p>
+<p><code>git add &lt;file name&gt;</code></p>
+<p><code>git commit -m &quot;descriptive message&quot;</code></p>
+<p><code>git push</code></p>
+<p><strong>pulling files from remote repo to my local repo</strong></p>
+<p><code>git pull</code></p>
+</div>
+</section>
+<section id="want-to-test-github-out" class="slide level1">
+<h1>Want to test <code>Github</code> out?</h1>
+<ul>
+<li class="fragment">create an account <code>github.com</code><br />
+</li>
+<li class="fragment">create a repo called <code>homework9</code></li>
+<li class="fragment">feel free to email me with questions if you need help cloning/adding/pushing</li>
+</ul>
+</section>
+<section id="a-forever-learning-curve" class="slide level1">
+<h1>a (forever?) learning curve</h1>
+<figure>
+<img src="git.png" height="500" />
+</figure>
+</section>
+<section id="package-managers" class="slide level1" data-background-color="#f9cb9c">
+<h1>package managers</h1>
+</section>
+<section id="what-is-a-package-manager" class="slide level1">
+<h1>what is a package manager?</h1>
+<blockquote>
+<p>tool that allows you to install and manage additional libraries not part of a standard distribution</p>
+</blockquote>
+<ul>
+<li class="fragment">what are some standard libraries we have used this quarter?</li>
+</ul>
+</section>
+<section id="what-is-the-python-package-manager" class="slide level1">
+<h1>what is the <code>python</code> package manager?</h1>
+<p><a href="https://pypi.org/project/pip/"><code>pip</code></a>!</p>
+</section>
+<section id="how-to-use-pip" class="slide level1">
+<h1>how to use pip</h1>
+<p><code>pip --version</code></p>
+<p><code>pip install &lt;package name&gt;</code></p>
+<p><code>pip install --upgrade &lt;package name&gt;</code></p>
+</section>
+<section id="what-are-some-modules-you-may-want-to-install-right-now" class="slide level1">
+<h1>what are some modules you may want to install right now?</h1>
+<ul>
+<li class="fragment"><a href="https://pandas.pydata.org/"><code>pandas</code></a></li>
+<li class="fragment"><a href="https://www.numpy.org/"><code>numpy</code></a></li>
+<li class="fragment"><a href="https://www.scipy.org/"><code>scipy</code></a></li>
+<li class="fragment"><a href="https://biopython.org/"><code>BioPython</code></a></li>
+<li class="fragment"><a href="https://scikit-learn.org/stable/"><code>scikit-learn</code></a></li>
+</ul>
+</section>
+<section id="redo-of-hw6-with-biopython" class="slide level1">
+<h1>redo of hw6 with <code>BioPython</code></h1>
+<p><a href="https://github.com/skhilton/hw6-redo">github link</a></p>
+</section>
+<section id="environments" class="slide level1" data-background-color="#d9d2e9">
+<h1>environments</h1>
+</section>
+<section id="what-is-anaconda-conda-miniconda" class="slide level1">
+<h1>what is anaconda / conda / miniconda?</h1>
+<p><a href="https://www.anaconda.com/distribution/">anaconda</a></p>
+<blockquote>
+<p>cross platform package and environment manager</p>
+</blockquote>
+</section>
+<section id="section" class="slide level1">
+<h1>...</h1>
+<p>&quot;it's like <code>pip</code> for non-<code>python</code> things and pip for <code>python</code> things and more&quot;</p>
+</section>
+<section id="whats-the-difference-between-anaconda-and-pip" class="slide level1">
+<h1>what's the difference between <code>anaconda</code> and <code>pip</code>?</h1>
+<blockquote>
+<p>This highlights a key difference between conda and pip. Pip installs Python packages whereas conda installs packages which may contain software written in any language... Another key difference between the two tools is that conda has the ability to create isolated environments that can contain different versions of Python and/or the packages installed in them.</p>
+</blockquote>
+</section>
+<section id="what-is-an-environment" class="slide level1">
+<h1>what is an environment?</h1>
+<ul>
+<li class="fragment">environments allow you to specify <em>exact</em> versions of software and specify dependencies</li>
+<li class="fragment">environments are helpful when you are developing software or starting a new project because you get a &quot;clean slate&quot;</li>
+</ul>
+</section>
+<section id="summary" class="slide level1" data-background-color="#9fc5e8">
+<h1>summary</h1>
+</section>
+<section id="programming-as-a-computational-biologist" class="slide level1">
+<h1>Programming as a computational biologist</h1>
+<ul>
+<li class="fragment">your code should be available to others (<code>Github</code>)<br />
+</li>
+<li class="fragment">your code should be understandable to others (documentation!)</li>
+<li class="fragment">your code should be runnable by others (this is very hard!)<br />
+</li>
+<li class="fragment">be conscious of when you should implement something yourself (more control) and when you should use preexisting packages (don't reinvent the wheel)</li>
+</ul>
+</section>
+<section id="call-for-questions-for-the-review-session" class="slide level1" data-background-color="#9fc5e8">
+<h1>call for questions for the review session</h1>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/lib/js/head.min.js"></script>
+  <script src="../reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+              { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
