@@ -8,7 +8,8 @@ problem set:
 [pdf](homework9.pdf)
 
 extra material:   
-[input_phred.txt](input_phred.txt)
+[input_phred.txt](input_phred.txt)  
+[optional programming problem input file](binsearch_example.txt)  
 
 You should turn in two files to canvas:   
 1. Answers to the problem set as a word doc or a pdf.   
